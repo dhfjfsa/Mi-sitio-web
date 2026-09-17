@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gottfried Wilhelm Leibniz</title>
+    <style>
+        /* Estilos base */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eef2f5;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Contenedor usando CSS Grid */
+        #container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            overflow: hidden;
+        }
+
+        /* Encabezado y Pie de página */
+        header, footer {
+            grid-column: 1 / -1; 
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        header h1 { margin: 0; font-size: 26px; }
+        footer { font-size: 13px; background: #1a252f; color: #aaa; }
+
+        /* Menú lateral */
+        nav {
+            background: #f8f9fa;
+            padding: 20px;
+            border-right: 1px solid #eee;
+        }
+
+        nav b {
+            display: block;
+            font-size: 18px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        nav span {
+            display: block;
+            padding: 10px;
+            margin-bottom: 5px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.2s background;
+        }
+
+        nav span:hover {
+            background: #3498db;
+            color: white;
+        }
+
+        /* Contenido principal */
+        main {
+            padding: 30px;
+            min-height: 350px;
+        }
+
+        main h3 { margin-top: 0; color: #2c3e50; }
+
+        /* Estilo global para las imágenes */
+        main img {
+            border-radius: 8px;
+            max-width: 100%;
+            height: 220px;
+            object-fit: cover;
+            margin-top: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+<div id="container">
+    <header>
+        <h1>Gottfried Wilhelm Leibniz</h1>
+    </header>
+
+    <nav>
+        <b>Menú</b>
+        <span onclick="cambiarInfo('home')">Home</span>
+        <span onclick="cambiarInfo('Biografia')">Biografía</span>
+        <span onclick="cambiarInfo('Poesia')">Poesía</span>
+        <span onclick="cambiarInfo('Corriente')">Corriente</span>
+        <span onclick="cambiarInfo('Frase matona')">Frase matona</span>
+        <span onclick="cambiarInfo('Me gusta por:')">Me gusta por:</span>
+    </nav>
+    
+    <main id="content">
+        <p>Esta es la página de bienvenida. Selecciona una opción en el menú de la izquierda para desplazarte por la información.</p>
+    </main>
+    
+    <footer>
+        Copyright &copy; W3Schools.com
+    </footer>
+</div>
+
+<script>
+    function cambiarInfo(opcion) {
+        const panel = document.getElementById('content');
+
+        if (opcion === 'home') {
+            panel.innerHTML = "<p>Esta es la página de bienvenida. Selecciona una opción en el menú de la izquierda para desplazarte por la información.</p>";
+        } else if (opcion === 'Biografia') {
+            panel.innerHTML = "<h3>Biografía</h3><p>Nació en Leipzig, Alemania, en 1646. Demostró ser un prodigio desde temprano, dominando el latín de forma autodidacta en la biblioteca de su padre antes de los diez años.</p><img src='gettyimages-525516272-594x594.jpg' alt='Gottfried Wilhelm Leibniz'>";
+        } else if (opcion === 'Poesia') {
+            panel.innerHTML = "<h3>Poesía</h3><p>Aunque no es recordado principalmente como poeta, Leibniz compuso una cantidad considerable de versos, panegíricos y epigramas en latín, francés y alemán.</p><img src='gettyimages-1155693629-594x594.jpg' alt='Poesía de Leibniz'>";
+        } else if (opcion === 'Corriente') {
+            panel.innerHTML = "<h3>Corriente</h3><p>Junto con René Descartes y Baruch Spinoza, es uno de los pilares del racionalismo del siglo XVII.</p><img src='2a3c550cc7e86e943696ee0529620811.jpg' alt='Corriente filosófica'>";
+        } else if (opcion === 'Frase matona') {
+            // Reemplazo con la imagen de Getty
+            panel.innerHTML = "<h3>Frase matona</h3><p><em>\"La música es el ejercicio aritmético oculto de un alma que no sabe que está calculando.\"</em></p><img src='gettyimages-1155693629-594x594.jpg' alt='Frase de Leibniz'>";
+        } else if (opcion === 'Me gusta por:') {
+            panel.innerHTML = "<h3>Me gusta por:</h3><p>Me gusta por ser de los pocos en ver el lado bueno de las cosas.</p><img src='gettyimages-525516272-594x594.jpg' alt='Me gusta'>";
+        }
+    }
+</script>
+</body>
+</html>

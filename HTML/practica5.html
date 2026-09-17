@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es"> 
+<head> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> El clarin </title>
+    <style>
+        body { 
+            background-color: #e2dfce; 
+            color: #1a1a1a; 
+            font-family: 'Times New Roman', Times, serif; 
+            padding: 20px; 
+            max-width: 800px; 
+            margin: 0 auto; 
+            line-height: 1.5; 
+        }
+        
+        .cabecera { text-align: center; border-bottom: 5px solid #1a1a1a; border-top: 5px solid #1a1a1a; padding: 15px 0; margin-bottom: 25px; }
+        .cabecera h1 { font-size: 3.8rem; margin: 0; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; }
+        .datos-edicion { display: flex; justify-content: space-between; font-size: 1rem; border-top: 1px solid #1a1a1a; margin-top: 10px; padding-top: 5px; font-weight: bold; text-transform: uppercase; }
+        
+        .noticia { column-count: 2; column-gap: 30px; margin-bottom: 20px; }
+        
+        h2 { font-size: 1.4rem; border-bottom: 2px solid #1a1a1a; margin-top: 0; padding-bottom: 4px; text-transform: uppercase; }
+        
+        /* --- ESTILOS NUEVOS PARA LAS IMÁGENES --- */
+        .foto-prensa {
+            width: 100%; /* Ocupan todo el ancho de la columna */
+            height: 200px; /* Altura fija para que todas sean cuadros idénticos */
+            object-fit: cover; /* Centra y recorta la imagen para que no se deforme/aplaste */
+            border: 2px solid #1a1a1a; /* Borde oscuro para enmarcar la foto */
+            margin-bottom: 15px; /* Espacio debajo de cada foto */
+            break-inside: avoid; /* Evita que una imagen se corte por la mitad entre columnas */
+            box-sizing: border-box;
+            filter: grayscale(100%) contrast(120%); /* Efecto de periódico antiguo impreso */
+        }
+        
+        table { border-collapse: collapse; width: 100%; margin-top: 15px; margin-bottom: 25px; font-size: 0.95rem; }
+        th, td { border: 1px solid #1a1a1a; padding: 8px; text-align: left; }
+        th { background-color: #1a1a1a; color: #f4f4f0; text-transform: uppercase; }
+        caption { font-weight: bold; font-size: 1.3rem; margin-bottom: 10px; text-transform: uppercase; border-bottom: 2px solid #1a1a1a; padding-bottom: 5px; }
+        
+        a { color: #1a1a1a; font-weight: bold; }
+    </style>
+</head>
+<body>
+    
+    <!-- Encabezado clásico de periódico -->
+    <div class="cabecera">
+        <h1>The Daily Bugle</h1>
+        <div class="datos-edicion">
+            <span>Edición de Nueva York</span>
+            <span>Jueves, 3 de Septiembre</span>
+            <span>Precio: 25¢</span>
+        </div>
+    </div>
+
+    <!-- Contenido a doble columna -->
+    <div class="noticia">
+        <h2>¡Amenaza Arácnida!</h2>
+        <p>El enmascarado conocido como <strong>Spider-Man</strong> ha sido visto nuevamente columpiándose por nuestras calles. ¿Héroe o amenaza pública? Exigimos respuestas. A continuación, los datos recopilados por nuestros reporteros.</p>
+         <img src="spiderman1.png" alt="Spider-Man (Tobey Maguire)" class="foto-prensa">
+         <img src="spiderman2.png" alt="Spider-Man (Andrew Garfield)" class="foto-prensa">
+         <img src="spiderman3.png" alt="Spider-Man (Tom Holland)" class="foto-prensa">
+        
+        <h2>Sospechosos de llevar la máscara</h2>
+        <ol type="1">
+            <li>Tobey Maguire (Incidente de 2002)</li>
+            <li>Andrew Garfield (Incidente de 2012)</li>
+            <li>Tom Holland (Reportes actuales)</li>
+        </ol>
+
+        <h2>Poderes Registrados</h2>
+        <ul style="list-style-type: square;"> 
+            <li>Fuerza y agilidad desproporcionada</li>
+            <li>Capacidad para trepar muros de cristal</li>
+            <li>Un presunto sexto "sentido"</li>
+        </ul>
+    </div>
+
+    <!-- Tabla con aspecto formal/policial -->
+    <table>
+        <caption>Registro de Criminales Relacionados</caption>
+        <thead>
+            <tr>
+                <th>Villano</th>
+                <th>Reporte Policial</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Duende Verde</td>
+                <td>Uso de planeador y explosivos</td>
+            </tr>
+            <tr> 
+                <td>Doctor Octopus</td>
+                <td>Brazos mecánicos adheridos a la espina dorsal</td>
+            </tr>
+            <tr> 
+                <td>Venom</td>
+                <td>Simbionte alienígena hostil</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div style="text-align: center; border-top: 2px solid #1a1a1a; padding-top: 15px;">
+        <a href="https://spiderman.fandom.com/wiki/Peter_Parker_(Earth-616)" target="_blank" style="text-decoration: underline;">Suscríbase a nuestra edición digital aquí</a>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div id="container" style="width:800px">
+    <div id="header" style="background-color:#FFA500;">
+        <h1 style="margin-bottom:0;">MI LISTA DE AMIGOS</h1>
+    </div>
+
+    <div id="menu" style="background-color:aquamarine;height:400px;width:200px;float:left;">
+        <b>Menu</b><br>
+        <a href="#" onclick="cambiarInfo('home')">Home</a><br>
+        <a href="#" onclick="cambiarInfo('Cabrera')">Cabrera</a><br>
+        <a href="#" onclick="cambiarInfo('Michelle')">Michelle</a><br>
+        <a href="#" onclick="cambiarInfo('Padrino')">Padrino</a><br>
+        <a href="#" onclick="cambiarInfo('Antonio')">Antonio</a><br>
+        <a href="#" onclick="cambiarInfo('Cristian')">Cristian</a><br>
+    </div>
+    
+    <div id="content" style="background-color:#EEEEEE;height:400px;width:600px;float:left;padding:10px;box-sizing:border-box;">
+        Esta es la página Inicial o Home de bienvenida, para desplazarse por la información de mis amigos, seleccionarlos del menú;
+    </div>
+    
+    <div id="footer" style="background-color:#DAB2FF;clear:both;text-align:center;"> Copyright © W3Schools.com
+    </div>
+</div>
+
+<script>
+    function cambiarInfo(amigo) {
+        const panel = document.getElementById('content');
+        
+        if (amigo === 'home') {
+            panel.innerHTML = "Esta es la página Inicial o Home de bienvenida, para desplazarse por la información de mis amigos, seleccionarlos del menú;";
+        } else if (amigo === 'Cabrera') {
+            panel.innerHTML = "<h3>Cabrera</h3><p>Es bien gay.</p>";
+        } else if (amigo === 'Michelle') {
+            panel.innerHTML = "<h3>Michelle</h3><p>Le tiene miedo a la chamba.</p>";
+        } else if (amigo === 'Padrino') {
+            panel.innerHTML = "<h3>Padrino</h3><p>Le gustan las transformers.</p>";
+        } else if (amigo === 'Antonio') {
+            panel.innerHTML = "<h3>Antonio</h3><p>Le gustan las transformers.</p>";
+        } else if (amigo === 'Cristian') {
+            panel.innerHTML = "<h3>Cristian</h3><p>Ya dejeme señor.</p>";
+        }
+    }
+</script>
+</body>
+</html>
