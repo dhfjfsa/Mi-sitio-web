@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Ejemplo CSS Unificado</title>
+    <style>
+        body {
+            background-color: yellow;
+        }
+
+        p {
+            text-align: center; 
+            color: green; 
+            font-family: arial;
+        }
+
+        #para1 {
+            text-align: center;
+            color: red;
+        }
+
+        .para1 {
+            text-align: center;
+            color: purple;
+        }
+
+        h1.center {
+            color: blue; 
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Este texto no esta afectado por estilo "para1" </p>
+    <p> Ejemplo para efecto en cascada</p>
+    <p id="para1">HOLA MUNDO !</p>
+    <p class="para1">HOLA MUNDO !</p>
+    <h2 id="para1"> HOLA MUNDO 2!</h2>
+    <p class="center"> hola</p>
+
+    <a href="#"><h1 class="center">HOLA</h1></a>
+</body>
+</html>
