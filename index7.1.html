@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gottfried Wilhelm Leibniz - Archivo Histórico</title>
+    <style>
+        /* Definición de tipografía */
+        @font-face {
+            font-family: 'CabinetGrotesk';
+            src: local('Trebuchet MS'), local('Arial Black');
+            font-display: swap;
+        }
+
+        :root {
+            --p4-yellow: #f5d100;
+            --p4-black: #111111;
+            --p4-tab-bg: #2a2a2a;
+            --p4-white: #ffffff;
+            --p4-gray: #f2f2f2;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Verdana', 'Geneva', sans-serif;
+            background-color: var(--p4-yellow);
+            background-image: repeating-linear-gradient(
+                45deg, 
+                transparent, 
+                transparent 15px, 
+                rgba(0, 0, 0, 0.06) 15px, 
+                rgba(0, 0, 0, 0.06) 30px
+            );
+            color: var(--p4-black);
+            margin: 0;
+            padding: 25px 15px;
+            display: flex;
+            justify-content: center;
+        }
+
+        #container {
+            width: 100%;
+            max-width: 960px;
+            background-color: var(--p4-white);
+            border: 5px solid var(--p4-black);
+            box-shadow: 14px 14px 0px var(--p4-black);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Encabezado */
+        header {
+            background-color: var(--p4-black);
+            color: var(--p4-yellow);
+            padding: 20px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid #333;
+        }
+
+        header h1 { 
+            margin: 0; 
+            font-size: 24px; 
+            font-family: 'CabinetGrotesk', 'Impact', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transform: skewX(-4deg);
+        }
+
+        header span.badge {
+            background-color: var(--p4-yellow);
+            color: var(--p4-black);
+            font-weight: bold;
+            padding: 4px 10px;
+            font-size: 11px;
+            text-transform: uppercase;
+            border: 2px solid var(--p4-black);
+        }
+
+        /* Barra de pestañas superior */
+        nav.tabs-bar {
+            background-color: #1a1a1a;
+            display: flex;
+            align-items: flex-end;
+            padding: 10px 14px 0 14px;
+            gap: 6px;
+            border-bottom: 4px solid var(--p4-black);
+            overflow-x: auto;
+        }
+
+        /* Enlaces estilo Pestaña (Tabs) */
+        nav.tabs-bar a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 18px;
+            background-color: var(--p4-tab-bg);
+            color: #d1d1d1;
+            text-decoration: none; /* Sin subrayado */
+            font-family: 'Verdana', sans-serif;
+            font-size: 13px;
+            font-weight: bold;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            border: 2px solid transparent;
+            border-bottom: none;
+            transition: all 0.15s ease-in-out;
+            white-space: nowrap;
+        }
+
+        nav.tabs-bar a .tab-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #777;
+        }
+
+        nav.tabs-bar a:hover {
+            background-color: #3b3b3b;
+            color: var(--p4-white);
+            text-decoration: none;
+        }
+
+        nav.tabs-bar a.active {
+            background-color: var(--p4-white);
+            color: var(--p4-black);
+            border: 2px solid var(--p4-black);
+            border-bottom: 2px solid var(--p4-white);
+            margin-bottom: -4px;
+            position: relative;
+            z-index: 2;
+        }
+
+        nav.tabs-bar a.active .tab-dot {
+            background-color: #ff9800;
+        }
+
+        /* Área dinámica de contenido */
+        section#content {
+            padding: 35px;
+            min-height: 500px;
+            font-size: 15px;
+            line-height: 1.6;
+            background: repeating-linear-gradient(
+                -45deg, 
+                #ffffff, 
+                #ffffff 12px, 
+                #fafafa 12px, 
+                #fafafa 24px
+            );
+        }
+
+        section#content h2 { 
+            margin-top: 0; 
+            margin-bottom: 18px;
+            background-color: var(--p4-black);
+            color: var(--p4-yellow); 
+            display: inline-block;
+            padding: 7px 16px;
+            font-family: 'CabinetGrotesk', 'Impact', sans-serif;
+            font-size: 20px;
+            text-transform: uppercase;
+            transform: skewX(-6deg);
+            border: 2px solid var(--p4-yellow);
+            box-shadow: 4px 4px 0px var(--p4-black);
+        }
+
+        p {
+            margin: 0 0 16px 0;
+            color: #222;
+        }
+
+        /* Imágenes y figuras */
+        figure {
+            margin: 20px 0;
+            padding: 0;
+            display: inline-block;
+            max-width: 100%;
+        }
+
+        figure img {
+            display: block;
+            border: 4px solid var(--p4-black);
+            box-shadow: 6px 6px 0px var(--p4-yellow), 10px 10px 0px var(--p4-black);
+            width: 100%;
+            max-width: 480px;
+            height: 230px;
+            object-fit: cover;
+        }
+
+        figcaption {
+            margin-top: 12px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            background-color: var(--p4-black);
+            color: var(--p4-white);
+            padding: 4px 10px;
+            display: inline-block;
+        }
+
+        /* Video responsivo */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border: 4px solid var(--p4-black);
+            box-shadow: 6px 6px 0px var(--p4-yellow), 10px 10px 0px var(--p4-black);
+            margin: 20px 0;
+            max-width: 550px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Tabla de contenidos */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            border: 3px solid var(--p4-black);
+            background-color: var(--p4-white);
+            box-shadow: 5px 5px 0px var(--p4-black);
+        }
+
+        th, td {
+            padding: 10px 14px;
+            text-align: left;
+            border: 2px solid var(--p4-black);
+        }
+
+        th {
+            background-color: var(--p4-black);
+            color: var(--p4-yellow);
+            font-family: 'CabinetGrotesk', 'Verdana', sans-serif;
+            text-transform: uppercase;
+            font-size: 13px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f7f7f7;
+        }
+
+        /* Pie de página */
+        footer {
+            background-color: var(--p4-yellow);
+            color: var(--p4-black);
+            text-align: center;
+            padding: 14px;
+            font-size: 13px;
+            font-weight: bold;
+            border-top: 5px solid var(--p4-black);
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container">
+    <header>
+        <h1>Gottfried Wilhelm Leibniz</h1>
+        <span class="badge">1646 – 1716</span>
+    </header>
+
+    <!-- Navegación superior con pestañas -->
+    <nav class="tabs-bar">
+        <a href="#biografia" id="btn-biografia" class="active" onclick="navegar('biografia', event)">
+            <span class="tab-dot"></span> Biografía
+        </a>
+        <a href="#calculo" id="btn-calculo" onclick="navegar('calculo', event)">
+            <span class="tab-dot"></span> Cálculo & Lógica
+        </a>
+        <a href="#filosofia" id="btn-filosofia" onclick="navegar('filosofia', event)">
+            <span class="tab-dot"></span> Monadología
+        </a>
+        <a href="#legado" id="btn-legado" onclick="navegar('legado', event)">
+            <span class="tab-dot"></span> Legado & Video
+        </a>
+    </nav>
+    
+    <!-- Única sección dinámica -->
+    <section id="content">
+        <!-- Renderizado dinámico vía JavaScript -->
+    </section>
+    
+    <footer>
+        Archivo Histórico &bull; Maquetación Web
+    </footer>
+</div>
+
+<script>
+    const paginas = {
+        biografia: `
+            <h2>1. Biografía y Juventud</h2>
+            <p>Gottfried Wilhelm Leibniz nació en Leipzig en 1646. Considerado uno de los mayores polímatas del siglo XVII, realizó contribuciones fundamentales en matemáticas, física, derecho, historia y teología.</p>
+            <p>Accedió a temprana edad a la biblioteca familiar, dominando textos clásicos y sentando las bases de su pensamiento interdisciplinario.</p>
+            <figure>
+                <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80" alt="Libros antiguos y manuscritos">
+                <figcaption>Estudios clásicos y archivo documental</figcaption>
+            </figure>
+        `,
+        calculo: `
+            <h2>2. Cálculo Infinitesimal y Lógica</h2>
+            <p>Desarrolló simultáneamente e independientemente de Isaac Newton el cálculo diferencial e integral. Su notación matemática se convirtió en el estándar mundial.</p>
+            
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Concepto</th>
+                            <th>Notación Leibniz</th>
+                            <th>Notación Newton</th>
+                            <th>Aplicación Común</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Derivada</strong></td>
+                            <td>dy / dx</td>
+                            <td>ẏ (punto superior)</td>
+                            <td>Análisis general e ingeniería</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Integral</strong></td>
+                            <td>∫ f(x) dx</td>
+                            <td>Fluentes</td>
+                            <td>Cálculo integral moderno</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sistema binario</strong></td>
+                            <td>0 y 1 booleanos</td>
+                            <td>No aplica</td>
+                            <td>Fundamento de computación</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <figure>
+                <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=800&q=80" alt="Geometría y análisis matemático">
+                <figcaption>Rigor y formalismo matemático</figcaption>
+            </figure>
+        `,
+        filosofia: `
+            <h2>3. Filosofía: La Monadología</h2>
+            <p>En su obra <em>Monadología</em>, expuso que el universo está constituido por infinitas sustancias elementales denominadas mónadas, carentes de partes y coordinadas mediante una armonía preestablecida.</p>
+            <p>Es reconocido por formular que nuestro universo es <em>"el mejor de los mundos posibles"</em> dentro del marco del racionalismo filosófico.</p>
+            <figure>
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Paisaje natural y orden cósmico">
+                <figcaption>Armonía preestablecida y racionalismo</figcaption>
+            </figure>
+        `,
+        legado: `
+            <h2>4. Legado y Computación</h2>
+            <p>Leibniz construyó la calculadora mecánica <em>Stepped Reckoner</em>, capaz de realizar las cuatro operaciones aritméticas básicas, y formalizó el sistema binario base de la informática actual.</p>
+            
+            <div class="video-container">
+                <iframe 
+                    src="https://www.youtube.com/embed/GBIIQ0kP15E" 
+                    title="Video de YouTube" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <figure>
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="Placa de circuito electrónico">
+                <figcaption>Precursor de la arquitectura de computadoras</figcaption>
+            </figure>
+        `
+    };
+
+    function navegar(idPagina, e) {
+        if (e) e.preventDefault();
+        
+        const contenedor = document.getElementById('content');
+        if (paginas[idPagina]) {
+            contenedor.innerHTML = paginas[idPagina];
+            
+            // Actualiza la pestaña activa
+            document.querySelectorAll('nav.tabs-bar a').forEach(a => a.classList.remove('active'));
+            const botonActivo = document.getElementById('btn-' + idPagina);
+            if (botonActivo) botonActivo.classList.add('active');
+        }
+    }
+
+    // Carga inicial por defecto
+    window.addEventListener('DOMContentLoaded', () => {
+        navegar('biografia');
+    });
+</script>
+
+</body>
+</html>
