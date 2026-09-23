@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+	h1{
+	text-shadow: 5px 5px 5px #FF0000;
+	}
+	#grad1
+	{
+	height:200px;
+	background: linear-gradient(to top left, blue, orange);  
+	}
+	#sombra{
+	width:300px;
+	height:100px;
+	background-color:lightgrey;
+	box-shadow: 10px 10px 5px darkred;
+	}
+	div.transicion{
+	width:100px;
+	height:100px;
+	background:red;
+	-webkit-transition:width 2s, height 2s, -webkit-transform 2s; /* For Safari*/
+	transition:width 2s, height 2s, transform 2s;
+	}
+	div:hover.transicion{
+	font-size:24px;
+	color: white;
+	width:300px;
+	height:300px;
+	-webkit-transform:rotate(180deg); /* Chrome, Safari, Opera */
+	transform:rotate(180deg);
+	}
+	div.redondeado{
+	border:5px solid #a1a1a1;
+	padding:10px 40px; 
+	background:#dddddd;
+	width:300px;
+	border-radius:25px;
+	}
+</style>
+</head>
+<body>
+<div class="redondeado">  border-radius property Para redondear las esquinas del DIV o área utilizado</div> 
+<div class="transicion">Pasa el mouse por aquí para ver el efecto de 
+transición</div>
+<div id="sombra">Esta propiedad nos sirve para efecto de sombra 
+al DIV o al área deseada</div>
+<h1>Degradados Lineales - Diagonal</h1>
+<div id="grad1"></div> 
+</body>
+</html>
