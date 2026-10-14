@@ -1,0 +1,15 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Compilar NASM x64",
+      "type": "shell",
+      "command": "nasm -f elf64 ${file} -o ${fileDirname}/${fileBasenameNoExtension}.o && ld ${fileDirname}/${fileBasenameNoExtension}.o -o ${fileDirname}/${fileBasenameNoExtension}",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    }
+  ]
+}
