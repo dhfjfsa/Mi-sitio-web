@@ -1,0 +1,161 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Fondo animado espectacular */
+body {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    color: #333;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Glassmorphism para la calculadora */
+.calculadora-glass {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    width: 100%;
+    max-width: 420px;
+}
+
+h2 {
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.fecha {
+    text-align: center;
+    color: #f0f0f0;
+    font-size: 0.85em;
+    margin-bottom: 25px;
+}
+
+/* Inputs y Formularios */
+.grupo-input { margin-bottom: 20px; }
+.grupo-input label {
+    display: block; margin-bottom: 8px;
+    color: #fff; font-weight: 500;
+}
+.grupo-input input[type="number"] {
+    width: 100%; padding: 12px;
+    border: none; border-radius: 10px;
+    background: rgba(255, 255, 255, 0.7);
+    font-size: 1.05em; transition: 0.3s;
+}
+.grupo-input input[type="number"]:focus {
+    background: #fff; outline: none;
+    box-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
+/* Radio buttons */
+.grupo-radios {
+    display: flex; flex-wrap: wrap; gap: 15px;
+    margin: 20px 0; justify-content: center;
+}
+.grupo-radios label { color: #fff; cursor: pointer; }
+
+/* Botones Calculadora */
+.grupo-botones { display: flex; gap: 15px; margin-top: 20px; }
+button {
+    padding: 12px; border: none; border-radius: 10px;
+    font-weight: 600; cursor: pointer; flex: 1;
+    transition: 0.3s; color: white;
+}
+.btn-calcular { background: #3b82f6; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4); }
+.btn-calcular:hover { background: #2563eb; transform: translateY(-2px); }
+.btn-limpiar { background: #f97316; box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4); }
+.btn-limpiar:hover { background: #ea580c; transform: translateY(-2px); }
+
+/* Resultado */
+.resultado {
+    text-align: center; min-height: 50px;
+    margin: 20px 0; font-size: 1.2em;
+    color: #fff; font-weight: bold;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+}
+
+/* MODAL DE SUSCRIPCIÓN */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 1000; opacity: 1; transition: opacity 0.4s ease;
+}
+.modal-overlay.hidden {
+    opacity: 0; pointer-events: none;
+}
+.glass-modal {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 40px; border-radius: 20px;
+    width: 90%; max-width: 900px;
+    position: relative; text-align: center;
+    transform: scale(1); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.modal-overlay.hidden .glass-modal { transform: scale(0.8); }
+
+.close-btn {
+    position: absolute; top: 15px; right: 20px;
+    background: transparent; color: #333; font-size: 28px;
+    flex: none; padding: 0; box-shadow: none; width: auto;
+}
+.close-btn:hover { transform: scale(1.2); color: #e53e3e; background: transparent; }
+
+.modal-titulo { font-size: 2em; color: #2d3748; margin-bottom: 10px; }
+.modal-subtitulo { color: #718096; margin-bottom: 30px; }
+
+/* Planes Pricing Cards */
+.planes-container {
+    display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;
+}
+.plan-card {
+    background: #fff; padding: 30px 20px; border-radius: 15px;
+    flex: 1; min-width: 250px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease; position: relative;
+}
+.plan-card:hover { transform: translateY(-10px); }
+.plan-card h4 { font-size: 1.5em; margin-bottom: 15px; }
+.precio { font-size: 2.5em; font-weight: bold; margin-bottom: 20px; }
+.precio span { font-size: 0.4em; color: #a0aec0; }
+.plan-card ul { list-style: none; text-align: left; margin-bottom: 25px; }
+.plan-card ul li { margin-bottom: 10px; color: #4a5568; }
+.btn-plan { width: 100%; padding: 15px; border-radius: 8px; font-weight: bold; }
+
+/* Colores de planes específicos */
+.basico { border-top: 5px solid #48bb78; }
+.basico-btn { background: #48bb78; }
+.premium { border: 2px solid #805ad5; transform: scale(1.05); }
+.premium:hover { transform: scale(1.05) translateY(-10px); }
+.premium-btn { background: #805ad5; }
+.black { border-top: 5px solid #1a202c; background: #1a202c; color: white; }
+.black h4, .black .precio, .black ul li { color: white; }
+.black-btn { background: linear-gradient(135deg, #d6bcfa, #9f7aea); color: #1a202c; }
+
+.badge {
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+    background: #805ad5; color: white; padding: 5px 15px;
+    border-radius: 20px; font-size: 0.8em; font-weight: bold;
+}

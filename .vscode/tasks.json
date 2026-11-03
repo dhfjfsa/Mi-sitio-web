@@ -2,12 +2,17 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Compilar NASM x64",
+      "label": "Compilar y Ejecutar NASM x64",
       "type": "shell",
-      "command": "nasm -f elf64 ${file} -o ${fileDirname}/${fileBasenameNoExtension}.o && ld ${fileDirname}/${fileBasenameNoExtension}.o -o ${fileDirname}/${fileBasenameNoExtension}",
+      "command": "nasm -f elf64 \"${file}\" -o \"${fileDirname}/${fileBasenameNoExtension}.o\" && ld \"${fileDirname}/${fileBasenameNoExtension}.o\" -o \"${fileDirname}/${fileBasenameNoExtension}\" && \"${fileDirname}/${fileBasenameNoExtension}\"",
       "group": {
         "kind": "build",
         "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
       },
       "problemMatcher": []
     }

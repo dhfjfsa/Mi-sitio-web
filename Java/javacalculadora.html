@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Premium</title>
+    <!-- Enlace al archivo CSS -->
+    <link rel="stylesheet" href="calculadora.css">
+    <!-- Fuente moderna -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Contenedor Principal de la Calculadora -->
+    <div class="calculadora-glass">
+        <h2>Calculadora</h2>
+        <p id="fechaActual" class="fecha"></p>
+
+        <form id="formCalculadora">
+            <div class="grupo-input">
+                <label>Primer Operando</label>
+                <input id="num1" type="number" step="any" placeholder="Ej. 10" required>
+            </div>
+            <div class="grupo-input">
+                <label>Segundo Operando</label>
+                <input id="num2" type="number" step="any" placeholder="Ej. 5" required>
+            </div>
+
+            <div class="grupo-radios">
+                <label><input type="radio" name="operacion" value="Sumar" checked> Sumar</label>
+                <label><input type="radio" name="operacion" value="Restar"> Restar</label>
+                <label><input type="radio" name="operacion" value="Multiplicar"> Multiplicar</label>
+                <label><input type="radio" name="operacion" value="Dividir"> Dividir</label>
+            </div>
+
+            <div id="resultado" class="resultado"></div>
+
+            <div class="grupo-botones">
+                <button type="button" class="btn-calcular" onclick="calcular()">Calcular</button>
+                <button type="button" class="btn-limpiar" onclick="limpiar()">Limpiar</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Ventana Modal de Suscripción (Oculta inicialmente) -->
+    <div id="modalSuscripcion" class="modal-overlay hidden">
+        <div class="modal-content glass-modal">
+            <button class="close-btn" onclick="cerrarModal()">×</button>
+            <h3 class="modal-titulo">¡Desbloquea todo el potencial!</h3>
+            <p class="modal-subtitulo">Elige un plan para realizar operaciones avanzadas y sin límites.</p>
+            
+            <div class="planes-container">
+                <!-- Plan Básico -->
+                <div class="plan-card basico">
+                    <h4>Plan Básico</h4>
+                    <div class="precio">$5<span>/mes</span></div>
+                    <ul>
+                        <li>✔ Operaciones básicas</li>
+                        <li>✔ Historial limitado</li>
+                        <li>❌ Con anuncios</li>
+                    </ul>
+                    <button class="btn-plan basico-btn" onclick="elegirPlan('Básico')">Elegir Básico</button>
+                </div>
+                
+                <!-- Plan Premium -->
+                <div class="plan-card premium">
+                    <div class="badge">Recomendado</div>
+                    <h4>Plan Premium</h4>
+                    <div class="precio">$15<span>/mes</span></div>
+                    <ul>
+                        <li>✔ Sin anuncios</li>
+                        <li>✔ Raíz y exponentes</li>
+                        <li>✔ Soporte 24/7</li>
+                    </ul>
+                    <button class="btn-plan premium-btn" onclick="elegirPlan('Premium')">Elegir Premium</button>
+                </div>
+                
+                <!-- Plan Black -->
+                <div class="plan-card black">
+                    <h4>Plan Black</h4>
+                    <div class="precio">$30<span>/mes</span></div>
+                    <ul>
+                        <li>✔ Todo lo de Premium</li>
+                        <li>✔ IA Matemática Integrada</li>
+                        <li>✔ Temas exclusivos VIP</li>
+                    </ul>
+                    <button class="btn-plan black-btn" onclick="elegirPlan('Black')">Elegir Black</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enlace al archivo JavaScript -->
+    <script src="calculadorapp.js"></script>
+</body>
+</html>

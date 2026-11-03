@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boxset Colección J.R.R. Tolkien | Mercado Libre</title>
+    <style>
+        /* Tipografía y fondo base */
+        body {
+            font-family: "Proxima Nova", -apple-system, Roboto, Arial, sans-serif;
+            background-color: #ebebeb; /* Gris característico de ML */
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        /* Encabezado amarillo */
+        .nav-header {
+            background-color: #ffe600;
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 1px 0 0 rgba(0,0,0,.1);
+        }
+
+        .nav-bounds {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px;
+        }
+
+        .search-bar {
+            background: #fff;
+            padding: 10px 15px;
+            border-radius: 2px;
+            width: 50%;
+            color: #999;
+            box-shadow: 0 1px 2px 0 rgba(0,0,0,.2);
+        }
+
+        .location-pin {
+            font-size: 13px;
+            color: #333;
+            margin-top: 10px;
+            width: 100%;
+            max-width: 1200px;
+            padding: 0 10px;
+        }
+
+        /* Contenedor principal */
+        .main-container {
+            max-width: 1180px;
+            margin: 40px auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Tarjeta blanca del producto */
+        .ui-pdp-card {
+            background-color: #fff;
+            border-radius: 4px;
+            box-shadow: 0 1px 2px 0 rgba(0,0,0,.1);
+            display: flex;
+            width: 100%;
+            padding: 16px;
+        }
+
+        /* Columna Izquierda: Galería */
+        .ui-pdp-gallery {
+            display: flex;
+            flex: 2;
+        }
+
+        /* Miniaturas (Punto 1) */
+        .ui-pdp-thumbnails {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-right: 20px;
+        }
+
+        .thumb-btn {
+            width: 50px;
+            height: 50px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #fff;
+            cursor: pointer;
+            font-size: 10px;
+            color: #666;
+            transition: border-color 0.2s;
+        }
+
+        .thumb-btn:hover {
+            border-color: #3483fa;
+        }
+
+        /* Imagen principal */
+        .ui-pdp-main-image {
+            width: 100%;
+            max-width: 500px;
+            height: 500px;
+            object-fit: contain;
+        }
+
+        /* Columna Derecha: Panel de compra */
+        .ui-pdp-info {
+            flex: 1;
+            padding-left: 32px;
+            border-left: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #999;
+            margin-bottom: 8px;
+        }
+
+        h1 {
+            font-size: 22px;
+            font-weight: 600;
+            margin: 0 0 12px 0;
+            line-height: 1.18;
+        }
+
+        /* Precio y su resaltado (Punto 3) */
+        .price-container {
+            margin: 15px 0;
+        }
+
+        .precio-original {
+            font-size: 36px;
+            font-weight: 300;
+            margin: 0;
+            transition: all 0.3s ease;
+        }
+
+        /* Clase dinámica para JS */
+        .precio-resaltado {
+            font-size: 48px;
+            font-weight: 600;
+            color: #00a650; /* Verde de oferta de ML */
+        }
+
+        .shipping-text {
+            color: #00a650;
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        /* Botones de acción principales */
+        .btn-comprar {
+            background-color: #3483fa; /* Azul ML */
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 16px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 8px;
+            transition: background-color 0.2s;
+        }
+
+        .btn-comprar:hover { background-color: #2968c8; }
+
+        .btn-carrito {
+            background-color: rgba(65,137,230,.15);
+            color: #3483fa;
+            border: none;
+            border-radius: 6px;
+            padding: 16px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 25px;
+            transition: background-color 0.2s;
+        }
+
+        .btn-carrito:hover { background-color: rgba(65,137,230,.2); }
+
+        /* Controles de la práctica (Botones auxiliares) */
+        .practica-controls {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .practica-controls p {
+            font-size: 12px;
+            color: #666;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .btn-auxiliar {
+            background: #fff;
+            border: 1px solid #ccc;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            margin-bottom: 5px;
+            width: 100%;
+        }
+
+        /* Descripción (Punto 2) */
+        .descripcion-box {
+            display: none;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .descripcion-box h2 {
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 24px;
+        }
+
+        .descripcion-box p {
+            font-size: 20px;
+            color: #666;
+            line-height: 1.4;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Simulación del Header de ML -->
+    <header class="nav-header">
+        <div class="nav-bounds">
+            <div style="font-weight: 900; font-size: 24px; color: #2d3277;">Mercado Libre</div>
+            <div class="search-bar">Buscar productos, marcas y más...</div>
+            <div style="font-size: 14px;">Mis compras</div>
+        </div>
+        <div class="location-pin">
+            📍 Enviar a Ciudad Valles - San Luis Potosí
+        </div>
+    </header>
+
+    <main class="main-container">
+        <div class="ui-pdp-card">
+            
+            <!-- Columna Izquierda: Galería e Imagen -->
+            <div class="ui-pdp-gallery">
+                <!-- Punto 1: 4 botones para los lados del producto (estilo miniaturas) -->
+                <div class="ui-pdp-thumbnails">
+                    <button class="thumb-btn" onclick="cambiarLado('vista1')">Todo</button>
+                    <button class="thumb-btn" onclick="cambiarLado('vista2')">Libros</button>
+                    <button class="thumb-btn" onclick="cambiarLado('vista3')">Cartas</button>
+                    <button class="thumb-btn" onclick="cambiarLado('vista4')">Caja</button>
+                </div>
+                
+                <img id="imagen-producto" class="ui-pdp-main-image" src="669eb72d-9222-4c1c-9d29-c093ee195e02.jpeg" alt="Colección Tolkien">
+            </div>
+
+            <!-- Columna Derecha: Información y Compra -->
+            <div class="ui-pdp-info">
+                <div class="subtitle">Nuevo | +1000 vendidos</div>
+                <h1>Boxset Colección J.R.R. Tolkien (El Señor De Los Anillos, El Hobbit)</h1>
+                
+                <!-- Punto 3: Precio -->
+                <div class="price-container">
+                    <p id="texto-precio" class="precio-original">$ 2,850</p>
+                </div>
+
+                <div class="shipping-text">Llega gratis mañana</div>
+
+                <!-- Botones comerciales (Estéticos) -->
+                <button class="btn-comprar">Comprar ahora</button>
+                <button class="btn-carrito">Agregar al carrito</button>
+
+                <!-- Botones de los requerimientos de la práctica -->
+                <div class="practica-controls">
+                    <p>CONTROLES DE LA PRÁCTICA JS:</p>
+                    <button class="btn-auxiliar" onclick="resaltarPrecio()">Resaltar / Restaurar Precio</button>
+                    <!-- Punto 2: Dos botones para descripción -->
+                    <button class="btn-auxiliar" onclick="mostrarDescripcion()">Ver Descripción</button>
+                    <button class="btn-auxiliar" onclick="ocultarDescripcion()">Ocultar Descripción</button>
+                </div>
+
+                <!-- Contenedor de la descripción -->
+                <div id="caja-descripcion" class="descripcion-box">
+                    <h2>Descripción</h2>
+                    <p>Espectacular colección de Biblioteca J.R.R. Tolkien. Incluye los tomos de "El Señor de los Anillos", "El Hobbit" y "El Silmarillion". Viene presentada en una hermosa caja verde con la inscripción del Anillo Único, e incluye postales exclusivas de la Tierra Media, cartas de los anillos y un pergamino con alfabeto rúnico.</p>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Punto 4: Código JS en archivo externo -->
+    <script src="app.js"></script>
+
+</body>
+</html>
