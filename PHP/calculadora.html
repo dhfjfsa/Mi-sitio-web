@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Web</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --panel: #111827;
+            --panel-soft: #1f2937;
+            --primary: #8b5cf6;
+            --primary-dark: #7c3aed;
+            --secondary: #22c55e;
+            --text: #e5e7eb;
+            --muted: #9ca3af;
+            --shadow: rgba(0, 0, 0, 0.25);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0f172a, #1e293b 40%, #312e81);
+            color: var(--text);
+        }
+
+        .calculadora {
+            width: min(90%, 420px);
+            background: rgba(17, 24, 39, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 30px 24px;
+            box-shadow: 0 20px 45px var(--shadow);
+        }
+
+        h1 {
+            margin: 0 0 20px;
+            text-align: center;
+            font-size: 2rem;
+            color: #f8fafc;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        select,
+        input[type="number"] {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #374151;
+            border-radius: 10px;
+            background: var(--panel-soft);
+            color: var(--text);
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        select:focus,
+        input[type="number"]:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.25);
+        }
+
+        .botones {
+            display: flex;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        button,
+        input[type="reset"],
+        input[type="submit"] {
+            flex: 1;
+            padding: 12px 16px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        button:hover,
+        input[type="reset"]:hover,
+        input[type="submit"]:hover {
+            transform: translateY(-1px);
+        }
+
+        input[type="reset"] {
+            background: #374151;
+            color: var(--text);
+        }
+
+        input[type="submit"] {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+        }
+
+        .resultado-box {
+            background: var(--panel-soft);
+            padding: 14px;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            text-align: center;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .error {
+            color: #ef4444;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculadora">
+        <h1>Calculadora</h1>
+        <form id="calcForm">
+            <label for="operador">Selecciona la operación:</label>
+            <select id="operador" name="operador">
+                <option value="suma">Suma</option>
+                <option value="resta">Resta</option>
+                <option value="multiplicacion">Multiplicación</option>
+                <option value="division">División</option>
+            </select>
+
+            <label for="valor1">Ingresa tu primer número:</label>
+            <input type="number" id="valor1" name="valor1" step="any" required>
+
+            <label for="valor2">Ingresa tu segundo valor:</label>
+            <input type="number" id="valor2" name="valor2" step="any" required>
+
+            <div class="botones">
+                <input type="reset" value="Borrar" id="btnBorrar">
+                <input type="submit" value="Calcular">
+            </div>
+        </form>
+
+        <div id="resultadoBox" class="resultado-box"></div>
+        <div id="errorBox" class="error"></div>
+    </div>
+
+    <script>
+        const form = document.getElementById('calcForm');
+        const resultadoBox = document.getElementById('resultadoBox');
+        const errorBox = document.getElementById('errorBox');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Evita que la página se recargue
+
+            // Limpiamos mensajes anteriores
+            resultadoBox.style.display = 'none';
+            errorBox.textContent = '';
+
+            const n1 = parseFloat(document.getElementById('valor1').value);
+            const n2 = parseFloat(document.getElementById('valor2').value);
+            const operador = document.getElementById('operador').value;
+            
+            let resultado = 0;
+            let simbolo = '';
+
+            switch (operador) {
+                case 'suma':
+                    resultado = n1 + n2;
+                    simbolo = '+';
+                    break;
+                case 'resta':
+                    resultado = n1 - n2;
+                    simbolo = '-';
+                    break;
+                case 'multiplicacion':
+                    resultado = n1 * n2;
+                    simbolo = '×';
+                    break;
+                case 'division':
+                    if (n2 === 0) {
+                        errorBox.textContent = 'Error: No se puede dividir entre cero.';
+                        return;
+                    }
+                    resultado = n1 / n2;
+                    simbolo = '÷';
+                    break;
+            }
+
+            // Mostramos el resultado formateado
+            resultadoBox.innerHTML = `<span style="font-size: 1rem; color: var(--muted); display: block; margin-bottom: 5px;">${n1} ${simbolo} ${n2} =</span> ${resultado}`;
+            resultadoBox.style.display = 'block';
+        });
+
+        // Limpiar pantalla al presionar el botón Borrar
+        document.getElementById('btnBorrar').addEventListener('click', function() {
+            resultadoBox.style.display = 'none';
+            errorBox.textContent = '';
+            form.reset();
+        });
+    </script>
+</body>
+</html>
